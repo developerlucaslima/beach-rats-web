@@ -37,9 +37,12 @@ export function HeaderNavigation() {
       {/* desktop navigation */}
       <nav className="hidden md:flex items-center gap-1">
         {headerNavigationConfig.map((item) => (
-          <Button key={item.href} asChild variant='ghost' size='sm' className="group">
+          <Button key={item.href} asChild variant='ghost' size='sm'>
             <Link href={item.href} aria-label={item.title}>
-              <item.icon className="h-5 w-5 group-hover:text-secondary"/>
+              <item.icon className="h-5 w-5"/>
+              <span>
+                {item.title}
+              </span>
             </Link>
           </Button>
         ))}
@@ -60,10 +63,10 @@ export function HeaderNavigation() {
         </SheetHeader>
           <div className="flex flex-col gap-4 py-4">
             {headerNavigationConfig.map(item => (
-              <Button key={item.href} asChild variant='ghost' size='sm' className="justify-start group" onClick={() => setIsOpen(false)}>
+              <Button key={item.href} asChild variant='ghost' size='sm' className="justify-start" onClick={() => setIsOpen(false)}>
                 <Link href={item.href}>
-                  <item.icon className="mr-2 h-5 w-5 group-hover:text-secondary"/>
-                  <span className="group-hover:text-secondary">
+                  <item.icon className="mr-2 h-5 w-5"/>
+                  <span>
                     {item.title}
                   </span>
                 </Link>

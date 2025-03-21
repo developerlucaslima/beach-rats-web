@@ -1,7 +1,9 @@
+import { Header } from "@/components/header"
+
 export default function Home() {
   return (
-    <>
-      <h1>First Commit</h1>
-    </>
+    <div className="min-h-screen flex flex-col">
+      <Header />
+    </div>
   );
 }

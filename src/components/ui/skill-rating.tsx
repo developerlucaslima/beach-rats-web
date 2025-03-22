@@ -80,7 +80,7 @@ export function SkillRating({
   return (
     <div className={cn("flex items-center space-x-4", className)}>
       <SkillRatingBadge icon={icon} />
-      <div className="w-full max-w-md space-y-2">
+      <div className="w-full max-w-md min-w-xs space-y-2">
         <SkillRatingLabel skill={skill} rating={rating} max={max} />
         <SkillRatingBar min={min} max={max} rating={rating} {...props} />
       </div>

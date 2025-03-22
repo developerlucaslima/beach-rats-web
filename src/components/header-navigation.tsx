@@ -4,7 +4,10 @@ import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 import Link from "next/link";
 import { useState } from "react";
-import { ModeToggle } from "./mode-toggle";
+import { ModeToggle } from "./ui/mode-toggle";
+
+// TODO: default text color mais fraca, and change when estiver na pagina atual
+// TODO: jogador ou jogadora
 
 export interface HeaderNavigationConfigProps {
   icon: LucideIcon
@@ -18,8 +21,8 @@ export function HeaderNavigation() {
   const headerNavigationConfig: HeaderNavigationConfigProps[] = [
     {
       icon: ShieldUser,
-      title: 'Eu',
-      href: '/me'
+      title: 'Jogador',
+      href: '/player'
     },
     {
       icon: Swords,

@@ -23,6 +23,7 @@ export interface RatingOption {
 
 export interface PlayerData {
   name: string;
+  photo: string
   age: number;
   role: Role;
   address: string;
@@ -36,6 +37,7 @@ export interface PlayerData {
 
 export const playerData: PlayerData = {
   name: "Lucas Lima",
+  photo: "https://github.com/developerlucaslima.png",
   age: 29,
   role: "atleta",
   address: "Praia de Copacabana, Rio de Janeiro, RJ, Brazil",

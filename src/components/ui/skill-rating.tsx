@@ -8,18 +8,18 @@ import { Button } from "./button";
 interface SkillRatingProps
   extends React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root> {
   skill: string;
-  abbreviation: string;
+  icon: string;
   min?: number;
-  max: number;
-  value: number;
+  max?: number;
+  rating: number;
   className?: string;
 }
 
 function SkillRatingBadge({
-  abbreviation,
+  icon,
   className,
   ...props
-}: { abbreviation: string; className?: string } & React.HTMLAttributes<HTMLDivElement>) {
+}: { icon: string; className?: string } & React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
     className={cn(
@@ -28,34 +28,34 @@ function SkillRatingBadge({
     )}
     {...props}
     >
-      <span className="text-foreground font-bold">{abbreviation}</span>
+      <span className="text-foreground font-bold">{icon}</span>
     </div>
   );
 }
 
 function SkillRatingLabel({
   skill,
-  value,
-  max,
+  rating,
+  max = 5,
   className,
   ...props
-}: { skill: string; value: number; max: number; className?: string } & React.HTMLAttributes<HTMLDivElement>) {
+}: { skill: string; rating: number; max: number; className?: string } & React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div className={cn("flex items-center justify-between text-sm text-secondary-foreground my-0", className)} {...props}>
       <span>{skill}</span>
-      <span>{value} / {max}</span>
+      <span>{rating} / {max}</span>
     </div>
   );
 }
 
 function SkillRatingBar({
   min = 0,
-  max,
-  value,
+  max = 5,
+  rating,
   className,
   ...props
-}: Pick<SkillRatingProps, "min" | "max" | "value" | "className"> & React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root>) {
-  const progressPercentage = ((value - min) / (max - min)) * 100;
+}: Pick<SkillRatingProps, "min" | "max" | "rating" | "className"> & React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root>) {
+  const progressPercentage = ((rating - min) / (max - min)) * 100;
   return (
     <ProgressPrimitive.Root
       data-slot="progress"
@@ -73,19 +73,19 @@ function SkillRatingBar({
 
 export function SkillRating({
   skill,
-  abbreviation,
+  icon,
   min = 0,
-  max,
-  value,
+  max = 5,
+  rating,
   className,
   ...props
 }: SkillRatingProps) {
   return (
     <div className={cn("flex items-center space-x-4", className)}>
-      <SkillRatingBadge abbreviation={abbreviation} />
+      <SkillRatingBadge icon={icon} />
       <div className="w-full max-w-md space-y-2">
-        <SkillRatingLabel skill={skill} value={value} max={max} />
-        <SkillRatingBar min={min} max={max} value={value} {...props} />
+        <SkillRatingLabel skill={skill} rating={rating} max={max} />
+        <SkillRatingBar min={min} max={max} rating={rating} {...props} />
       </div>
     </div>
   );

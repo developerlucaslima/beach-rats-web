@@ -1,6 +1,8 @@
 export type SkillType = "attack" | "defense";
 export type Role = "professor" | "aluno" | "atleta";
+export type Modality = "futevôlei" | "altinha" | "vólei" | "beach tennis";
 export type SidePreference = "left" | "right";
+export type CardType = "gold" | "silver" | "bronze" | "special"
 export type MentalLabel =
   | "Frieza"
   | "Concentrado"
@@ -18,6 +20,7 @@ export type PhysicalLabel =
   | "Explosivo"
   | "Potente";
 
+// TODO: type para regra de negocios no backend
 export const MentalRatings: RatingOption[] = [
   { label: "Frieza", emoji: "❄️" },
   { label: "Concentrado", emoji: "🎯" },
@@ -61,46 +64,50 @@ export interface PlayerData {
   photo: string
   age: number;
   role: Role;
+  modality: Modality;
+  country: string;
   address: string;
   dominantFoot: "left" | "right";
   preferredSide: SidePreference;
   fundamentals: Fundamental[];
   resources: Resource[];
-  mental: RatingOption;
   physical: RatingOption;
+  mental: RatingOption;
 }
 
 export const playerData: PlayerData = {
   name: "Lucas Lima",
   photo: "https://github.com/developerlucaslima.png",
   age: 29,
-  role: "atleta",
+  country: "🇧🇷",
+  role: "aluno",
+  modality: "futevôlei",
   address: "Praia de Copacabana, Rio de Janeiro, RJ, Brazil",
   dominantFoot: "right",
   preferredSide: "left",
   fundamentals: [
-    { skill: "Cabeça", emoji: "💆", rating: 3, type: "defense" },
-    { skill: "Ataque de Cabeça", emoji: "💥", rating: 2, type: "attack" },
-    { skill: "Ombro Direito", emoji: "💁🏽‍♂️", rating: 2, type: "defense" },
+    { skill: "Cabeça", emoji: "💆", rating: 4, type: "defense" },
+    { skill: "Ataque de Cabeça", emoji: "💥", rating: 3, type: "attack" },
+    { skill: "Ombro Direito", emoji: "💁🏽‍♂️", rating: 3, type: "defense" },
     { skill: "Ombro Esquerdo", emoji: "💁🏽‍♂️", rating: 3, type: "defense" },
-    { skill: "Peito", emoji: "🫀", rating: 3, type: "defense" },
+    { skill: "Peito", emoji: "🫀", rating: 4, type: "defense" },
     { skill: "Chapa Direita", emoji: "🦵", rating: 4, type: "defense" },
-    { skill: "Chapa Esquerda", emoji: "🦵", rating: 2, type: "defense" },
-    { skill: "Peito pé Direito", emoji: "🦶", rating: 2, type: "defense" },
-    { skill: "Peito pé Esquerdo", emoji: "🦶", rating: 4, type: "defense" },
-    { skill: "Chilena Direita", emoji: "🇨🇱", rating: 4, type: "attack" },
-    { skill: "Chilena Esquerda", emoji: "🇨🇱", rating: 4, type: "attack" },
+    { skill: "Chapa Esquerda", emoji: "🦵", rating: 3, type: "defense" },
+    { skill: "Peito pé Direito", emoji: "🦶", rating: 3, type: "defense" },
+    { skill: "Peito pé Esquerdo", emoji: "🦶", rating: 2, type: "defense" },
+    { skill: "Chilena Direita", emoji: "🇨🇱", rating: 3, type: "attack" },
+    { skill: "Chilena Esquerda", emoji: "🇨🇱", rating: 2, type: "attack" },
   ],
   resources: [
     { skill: "Coxa", emoji: "🍗", has: true, type: "defense" },
     { skill: "Shark", emoji: "🦈", has: false, type: "attack" },
-    { skill: "Kamikaze", emoji: "💥", has: true, type: "attack" },
-    { skill: "Bicicleta", emoji: "🚴", has: false, type: "attack" },
+    { skill: "Kamikaze", emoji: "💥", has: false, type: "attack" },
+    { skill: "Bicicleta", emoji: "🚴", has: true, type: "attack" },
     { skill: "Saque com Efeito", emoji: "🌀", has: true, type: "attack" },
-    { skill: "Pingo com Finta", emoji: "🎭", has: false, type: "attack" },
+    { skill: "Pingo com Finta", emoji: "🎭", has: true, type: "attack" },
   ],
-  mental: { label: "Frieza", emoji: "❄️" },
-  physical: { label: "Explosivo", emoji: "⚡" },
+  physical: PhysicalRatings[2],
+  mental: MentalRatings[7],
 }
 
 export function playerSummary(playerData: PlayerData) {
@@ -148,12 +155,12 @@ export function playerSummary(playerData: PlayerData) {
   const defense = calculateCategoryScore("defense")
   const resource = calculateResourcesScore()
   const fundamental = calculateFundamentalsScore()
-  const overall = (attack + defense + resource + fundamental) / 4
+  const overall = Math.round((attack + defense + resource + fundamental) / 4)
 
-  const cardType =
+  const cardType: CardType =
   overall >= 90 ? "special" :
-  overall >= 80 ? "gold" :
-  overall >= 70 ? "silver" :
+  overall >= 75 ? "gold" :
+  overall >= 60 ? "silver" :
   "bronze";
  
   return {
@@ -163,7 +170,5 @@ export function playerSummary(playerData: PlayerData) {
     fundamental,
     overall,
     cardType,
-    mental: playerData.mental,
-    physical: playerData.physical,
   };
 }

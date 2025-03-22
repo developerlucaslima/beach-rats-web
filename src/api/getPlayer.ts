@@ -1,7 +1,42 @@
 export type SkillType = "attack" | "defense";
 export type Role = "professor" | "aluno" | "atleta";
 export type SidePreference = "left" | "right";
+export type MentalLabel =
+  | "Frieza"
+  | "Concentrado"
+  | "Confiante"
+  | "Estressado"
+  | "Provocador"
+  | "Resiliente"
+  | "Determinado"
+  | "Distraído";
 
+export type PhysicalLabel =
+  | "Forte"
+  | "Ágil"
+  | "Resistente"
+  | "Explosivo"
+  | "Potente";
+
+export const MentalRatings: RatingOption[] = [
+  { label: "Frieza", emoji: "❄️" },
+  { label: "Concentrado", emoji: "🎯" },
+  { label: "Confiante", emoji: "😎" },
+  { label: "Estressado", emoji: "😤" },
+  { label: "Provocador", emoji: "😈" },
+  { label: "Resiliente", emoji: "💪" },
+  { label: "Determinado", emoji: "🔥" },
+  { label: "Distraído", emoji: "🤷" },
+];
+
+export const PhysicalRatings: RatingOption[] = [
+  { label: "Forte", emoji: "💪" },
+  { label: "Ágil", emoji: "🏃‍♂️" },
+  { label: "Resistente", emoji: "🛡️" },
+  { label: "Explosivo", emoji: "⚡" },
+  { label: "Potente", emoji: "🏋️‍♂️" },
+];
+  
 export interface Fundamental {
   skill: string;
   emoji: string;
@@ -53,8 +88,8 @@ export const playerData: PlayerData = {
     { skill: "Chapa Esquerda", emoji: "🦵", rating: 2, type: "defense" },
     { skill: "Peito pé Direito", emoji: "🦶", rating: 2, type: "defense" },
     { skill: "Peito pé Esquerdo", emoji: "🦶", rating: 4, type: "defense" },
-    { skill: "Chilena Direita", emoji: "🤸‍♂️", rating: 4, type: "attack" },
-    { skill: "Chilena Esquerda", emoji: "🤸‍♂️", rating: 4, type: "attack" },
+    { skill: "Chilena Direita", emoji: "🇨🇱", rating: 4, type: "attack" },
+    { skill: "Chilena Esquerda", emoji: "🇨🇱", rating: 4, type: "attack" },
   ],
   resources: [
     { skill: "Coxa", emoji: "🍗", has: true, type: "defense" },

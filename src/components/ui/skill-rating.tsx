@@ -1,26 +1,67 @@
 import * as ProgressPrimitive from '@radix-ui/react-progress'
+import { Check, X } from 'lucide-react'
 import * as React from 'react'
 
 import { cn } from '@/lib/utils'
 
-interface SkillRatingProps
-  extends React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root> {
+interface SkillProps {
   skill: string
   icon: string
+}
+
+interface FundamentalsSkillProps
+  extends SkillProps,
+    React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root> {
   min?: number
   max?: number
   rating: number
-  className?: string
 }
 
-function SkillRatingBadge({
+interface ResourcesSkillProps extends SkillProps {
+  hasSkill: boolean
+}
+
+function ResourceSkill({ className, ...props }: React.ComponentProps<'div'>) {
+  return (
+    <div
+      data-slot="resource"
+      className={cn('flex items-center space-x-4', className)}
+      {...props}
+    />
+  )
+}
+
+function FundamentalSkill({
+  className,
+  ...props
+}: React.ComponentProps<'div'>) {
+  return (
+    <div
+      data-slot="resource"
+      className={cn('flex items-center space-x-4', className)}
+      {...props}
+    />
+  )
+}
+
+function SkillContent({ className, ...props }: React.ComponentProps<'div'>) {
+  return (
+    <div
+      data-slot="resource"
+      className={cn(
+        'flex w-full max-w-md min-w-xs items-center justify-between space-y-2',
+        className,
+      )}
+      {...props}
+    />
+  )
+}
+
+function SkillBadge({
   icon,
   className,
   ...props
-}: {
-  icon: string
-  className?: string
-} & React.HTMLAttributes<HTMLDivElement>) {
+}: Pick<SkillProps, 'icon'> & React.ComponentProps<'div'>) {
   return (
     <div
       className={cn(
@@ -34,22 +75,54 @@ function SkillRatingBadge({
   )
 }
 
+function HasSkill({ hasSkill }: Pick<ResourcesSkillProps, 'hasSkill'>) {
+  return (
+    <div className="flex items-center">
+      {hasSkill ? (
+        <div className="flex items-center text-green-500">
+          <Check className="mr-1 h-5 w-5" />
+          <span>Sim</span>
+        </div>
+      ) : (
+        <div className="flex items-center text-red-500">
+          <X className="mr-1 h-5 w-5" />
+          <span>Não</span>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function SkillLabel({
+  skill,
+  className,
+  ...props
+}: Pick<SkillProps, 'skill'> & React.ComponentProps<'div'>) {
+  return (
+    <div
+      className={cn(
+        'text-secondary-foreground my-0 flex w-full items-center',
+        className,
+      )}
+      {...props}
+    >
+      {skill}
+    </div>
+  )
+}
+
 function SkillRatingLabel({
   skill,
   rating,
   max = 5,
   className,
   ...props
-}: {
-  skill: string
-  rating: number
-  max: number
-  className?: string
-} & React.HTMLAttributes<HTMLDivElement>) {
+}: Pick<FundamentalsSkillProps, 'skill' | 'rating' | 'max'> &
+  React.ComponentProps<'div'>) {
   return (
     <div
       className={cn(
-        'text-secondary-foreground my-0 flex items-center justify-between text-sm',
+        'text-secondary-foreground my-0 flex items-center justify-between',
         className,
       )}
       {...props}
@@ -68,14 +141,14 @@ function SkillRatingBar({
   rating,
   className,
   ...props
-}: Pick<SkillRatingProps, 'min' | 'max' | 'rating' | 'className'> &
+}: Pick<FundamentalsSkillProps, 'min' | 'max' | 'rating'> &
   React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root>) {
   const progressPercentage = ((rating - min) / (max - min)) * 100
   return (
     <ProgressPrimitive.Root
       data-slot="progress"
       className={cn(
-        'bg-primary/20 relative my-0 h-2 w-full overflow-hidden rounded-full',
+        'bg-primary/20 relative my-0 h-1 w-full overflow-hidden rounded-full',
         className,
       )}
       {...props}
@@ -89,22 +162,13 @@ function SkillRatingBar({
   )
 }
 
-export function SkillRating({
-  skill,
-  icon,
-  min = 0,
-  max = 5,
-  rating,
-  className,
-  ...props
-}: SkillRatingProps) {
-  return (
-    <div className={cn('flex items-center space-x-4', className)}>
-      <SkillRatingBadge icon={icon} />
-      <div className="w-full max-w-md min-w-xs space-y-2">
-        <SkillRatingLabel skill={skill} rating={rating} max={max} />
-        <SkillRatingBar min={min} max={max} rating={rating} {...props} />
-      </div>
-    </div>
-  )
+export {
+  ResourceSkill,
+  FundamentalSkill,
+  SkillContent,
+  SkillBadge,
+  HasSkill,
+  SkillLabel,
+  SkillRatingLabel,
+  SkillRatingBar,
 }

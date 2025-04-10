@@ -4,8 +4,8 @@ export const resources: Resources[] = [
   {
     name: 'Shark Attack',
     sluggedName: 'shark-attack',
-    resourceProgression: 'unfamiliar',
-    resourceProgressionValue: 0,
+    progressionDescription: 'unfamiliar',
+    progressionValue: 0,
     modality: ['futevolei', 'altinha'],
     skillType: ['attack'],
     description: 'Ataque aéreo acrobático com a parte inferior do pé.',
@@ -13,8 +13,8 @@ export const resources: Resources[] = [
   {
     name: 'Kamikaze Attack',
     sluggedName: 'kamikaze-attack',
-    resourceProgression: 'unfamiliar',
-    resourceProgressionValue: 0,
+    progressionDescription: 'unfamiliar',
+    progressionValue: 0,
     modality: ['futevolei', 'altinha'],
     skillType: ['attack'],
     description: 'Ataque aéreo acrobático com a parte superior do pé.',
@@ -22,8 +22,8 @@ export const resources: Resources[] = [
   {
     name: 'Bicicleta',
     sluggedName: 'bicicleta',
-    resourceProgression: 'unfamiliar',
-    resourceProgressionValue: 0,
+    progressionDescription: 'unfamiliar',
+    progressionValue: 0,
     modality: ['futevolei', 'altinha'],
     skillType: ['attack'],
     description: 'Ataque aéreo acrobático simulando o ato de pedalar no ar.',
@@ -31,8 +31,8 @@ export const resources: Resources[] = [
   {
     name: 'Sarrada',
     sluggedName: 'sarrada',
-    resourceProgression: 'unfamiliar',
-    resourceProgressionValue: 0,
+    progressionDescription: 'unfamiliar',
+    progressionValue: 0,
     modality: ['altinha'],
     skillType: ['attack', 'defense'],
     description: 'Recepção, levantamento ou ataque com o quadril.',
@@ -40,8 +40,8 @@ export const resources: Resources[] = [
   {
     name: 'Coxa Direita',
     sluggedName: 'coxa-direita',
-    resourceProgression: 'unfamiliar',
-    resourceProgressionValue: 0,
+    progressionDescription: 'unfamiliar',
+    progressionValue: 0,
     modality: ['futevolei', 'altinha'],
     skillType: ['defense'],
     description: 'Recepção ou levantamento com a coxa direita.',
@@ -49,8 +49,8 @@ export const resources: Resources[] = [
   {
     name: 'Coxa Esquerda',
     sluggedName: 'coxa-esquerda',
-    resourceProgression: 'unfamiliar',
-    resourceProgressionValue: 0,
+    progressionDescription: 'unfamiliar',
+    progressionValue: 0,
     modality: ['futevolei', 'altinha'],
     skillType: ['defense'],
     description: 'Recepção ou levantamento com a coxa esquerda.',
@@ -58,8 +58,8 @@ export const resources: Resources[] = [
   {
     name: 'Cavalo de Troia',
     sluggedName: 'cavalo-de-troia',
-    resourceProgression: 'unfamiliar',
-    resourceProgressionValue: 0,
+    progressionDescription: 'unfamiliar',
+    progressionValue: 0,
     modality: ['altinha'],
     skillType: ['attack'],
     description: 'Ataque com força e precisão utilizando joelho ou coxa.',
@@ -67,8 +67,8 @@ export const resources: Resources[] = [
   {
     name: 'Saque com Efeito',
     sluggedName: 'saque-com-efeito',
-    resourceProgression: 'unfamiliar',
-    resourceProgressionValue: 0,
+    progressionDescription: 'unfamiliar',
+    progressionValue: 0,
     modality: ['futevolei'],
     skillType: ['attack'],
     description:
@@ -77,8 +77,8 @@ export const resources: Resources[] = [
   {
     name: 'Pingo com Finta',
     sluggedName: 'pingo-com-finta',
-    resourceProgression: 'unfamiliar',
-    resourceProgressionValue: 0,
+    progressionDescription: 'unfamiliar',
+    progressionValue: 0,
     modality: ['futevolei'],
     skillType: ['attack'],
     description:
@@ -87,8 +87,8 @@ export const resources: Resources[] = [
   {
     name: 'Chilena Direita',
     sluggedName: 'chilena-direita',
-    resourceProgression: 'unfamiliar',
-    resourceProgressionValue: 0,
+    progressionDescription: 'unfamiliar',
+    progressionValue: 0,
     modality: ['futevolei', 'altinha'],
     skillType: ['defense'],
     description: 'Recepção ou levantamento com parte externa do pé direito.',
@@ -96,8 +96,8 @@ export const resources: Resources[] = [
   {
     name: 'Chilena Esquerda',
     sluggedName: 'chilena-esquerda',
-    resourceProgression: 'unfamiliar',
-    resourceProgressionValue: 0,
+    progressionDescription: 'unfamiliar',
+    progressionValue: 0,
     modality: ['futevolei', 'altinha'],
     skillType: ['defense'],
     description: 'Recepção ou levantamento com parte externa do pé esquerdo.',
@@ -105,8 +105,8 @@ export const resources: Resources[] = [
   {
     name: 'Peito do pé Direito',
     sluggedName: 'peito-do-pe-direito',
-    resourceProgression: 'unfamiliar',
-    resourceProgressionValue: 0,
+    progressionDescription: 'unfamiliar',
+    progressionValue: 0,
     modality: ['futevolei', 'altinha'],
     skillType: ['defense'],
     description: 'Recepção ou levantamento com parte superior do pé direito.',
@@ -114,8 +114,8 @@ export const resources: Resources[] = [
   {
     name: 'Peito do pé Esquerdo',
     sluggedName: 'peito-do-pe-esquerdo',
-    resourceProgression: 'unfamiliar',
-    resourceProgressionValue: 0,
+    progressionDescription: 'unfamiliar',
+    progressionValue: 0,
     modality: ['futevolei', 'altinha'],
     skillType: ['defense'],
     description: 'Recepção ou levantamento com parte superior do pé esquerdo.',
@@ -123,8 +123,8 @@ export const resources: Resources[] = [
   {
     name: 'Ataque pé Direto',
     sluggedName: 'ataque-pe-direto',
-    resourceProgression: 'unfamiliar',
-    resourceProgressionValue: 0,
+    progressionDescription: 'unfamiliar',
+    progressionValue: 0,
     modality: ['altinha'],
     skillType: ['attack'],
     description: 'Ataque com precisão e força com o pé direito.',
@@ -132,8 +132,8 @@ export const resources: Resources[] = [
   {
     name: 'Ataque pé Esquerdo',
     sluggedName: 'ataque-pe-esquerdo',
-    resourceProgression: 'unfamiliar',
-    resourceProgressionValue: 0,
+    progressionDescription: 'unfamiliar',
+    progressionValue: 0,
     modality: ['altinha'],
     skillType: ['attack'],
     description: 'Ataque com precisão e força com o pé esquerdo.',
@@ -141,8 +141,8 @@ export const resources: Resources[] = [
   {
     name: 'Levantamento de Letra',
     sluggedName: 'levantamento-de-letra',
-    resourceProgression: 'unfamiliar',
-    resourceProgressionValue: 0,
+    progressionDescription: 'unfamiliar',
+    progressionValue: 0,
     modality: ['altinha'],
     skillType: ['defense'],
     description: 'Recepção ou levantamento utilizando o pé entrelaçado.',
@@ -150,8 +150,8 @@ export const resources: Resources[] = [
   {
     name: 'Ataque de Letra',
     sluggedName: 'ataque-de-letra',
-    resourceProgression: 'unfamiliar',
-    resourceProgressionValue: 0,
+    progressionDescription: 'unfamiliar',
+    progressionValue: 0,
     modality: ['altinha'],
     skillType: ['attack'],
     description: 'Ataque com força e precisão utilizando o pé entrelaçado.',
@@ -159,8 +159,8 @@ export const resources: Resources[] = [
   {
     name: 'Ataque de Ombro',
     sluggedName: 'ataque-de-ombro',
-    resourceProgression: 'unfamiliar',
-    resourceProgressionValue: 0,
+    progressionDescription: 'unfamiliar',
+    progressionValue: 0,
     modality: ['altinha'],
     skillType: ['attack'],
     description: 'Ataque com força e precisão com o ombro.',
@@ -168,8 +168,8 @@ export const resources: Resources[] = [
   {
     name: 'Escorpião',
     sluggedName: 'escorpiao',
-    resourceProgression: 'unfamiliar',
-    resourceProgressionValue: 0,
+    progressionDescription: 'unfamiliar',
+    progressionValue: 0,
     modality: ['altinha'],
     skillType: ['defense'],
     description: 'Recepção ou levantamento utilizando o calcanhar.',
@@ -177,8 +177,8 @@ export const resources: Resources[] = [
   {
     name: 'Cola no peito',
     sluggedName: 'cola-no-peito',
-    resourceProgression: 'unfamiliar',
-    resourceProgressionValue: 0,
+    progressionDescription: 'unfamiliar',
+    progressionValue: 0,
     modality: ['altinha'],
     skillType: ['defense'],
     description: 'Recepção dominando totalmente a bola no peito.',
@@ -186,8 +186,8 @@ export const resources: Resources[] = [
   {
     name: 'Cola no pé',
     sluggedName: 'cola-no-pe',
-    resourceProgression: 'unfamiliar',
-    resourceProgressionValue: 0,
+    progressionDescription: 'unfamiliar',
+    progressionValue: 0,
     modality: ['altinha'],
     skillType: ['defense'],
     description: 'Recepção dominando totalmente a bola no pé.',
@@ -195,8 +195,8 @@ export const resources: Resources[] = [
   {
     name: 'Dois Tempos',
     sluggedName: 'dois-tempos',
-    resourceProgression: 'unfamiliar',
-    resourceProgressionValue: 0,
+    progressionDescription: 'unfamiliar',
+    progressionValue: 0,
     modality: ['altinha'],
     skillType: ['attack', 'defense'],
     description:
@@ -205,8 +205,8 @@ export const resources: Resources[] = [
   {
     name: 'Eclipse',
     sluggedName: 'eclipse',
-    resourceProgression: 'unfamiliar',
-    resourceProgressionValue: 0,
+    progressionDescription: 'unfamiliar',
+    progressionValue: 0,
     modality: ['altinha'],
     skillType: ['defense'],
     description:

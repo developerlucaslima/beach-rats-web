@@ -46,15 +46,15 @@ export interface Skill {
 type FundamentalProgression = 'beginner' | 'intermediate' | 'advanced' | 'professional'
 type FundamentalProgressionValue = 25 | 50 | 75 | 100
 export interface Fundamentals extends Skill {
-  fundamentalProgression: FundamentalProgression
-  fundamentalProgressionValue: FundamentalProgressionValue
+  progressionDescription: FundamentalProgression
+  progressionValue: FundamentalProgressionValue
 }
 
 type ResourceProgressionValue = 0 | 1 | 2 | 3
 type ResourceProgression = 'unfamiliar' | 'developing' | 'confident' | 'elite'
 export interface Resources extends Skill {
-  resourceProgression: ResourceProgression
-  resourceProgressionValue: ResourceProgressionValue
+  progressionDescription: ResourceProgression
+  progressionValue: ResourceProgressionValue
 }
 
 export interface UserProfile {

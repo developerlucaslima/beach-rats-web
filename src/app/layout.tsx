@@ -1,10 +1,9 @@
-import './globals.css'
+import '@/styles/globals.css'
 
 import type { Metadata } from 'next'
 // eslint-disable-next-line camelcase
 import { Geist, Geist_Mono } from 'next/font/google'
 
-import { Header } from '@/components/header'
 import { ThemeProvider } from '@/components/ui/theme-provider'
 
 const geistSans = Geist({
@@ -38,10 +37,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex min-h-screen flex-col">
-            <Header />
-            <div className="container mx-auto p-2">{children}</div>
-          </div>
+          <div className="mx-auto min-h-screen container max-w-sm">{children}</div>
         </ThemeProvider>
       </body>
     </html>

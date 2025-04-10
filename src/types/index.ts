@@ -1,5 +1,5 @@
 export type Modality = 'futevolei' | 'altinha'
-export type SkillType = 'attack' | 'defense'
+export type SkillType = 'ataque' | 'defesa'
 export type ProficiencyLevel = 'não sabe' | 'sabe' | 'masterizou'
 export type DominantFoot = 'direito' | 'esquerdo' | 'ambos'
 export type CourtSide = 'direita' | 'esquerda' | 'ambos'
@@ -11,28 +11,28 @@ export interface RatingOption {
 
 // posso manter apenas no frontend?
 export const mentalConditions: RatingOption[] = [
-  { label: 'Composed', emoji: '🥶' },           // Frieza
-  { label: 'Focused', emoji: '🧘‍♂️' },            // Concentrado
-  { label: 'Confident', emoji: '😎' },          // Confiante
-  { label: 'Stressed', emoji: '😤' },           // Estressado
-  { label: 'Provocative', emoji: '🤫' },        // Provocador
-  { label: 'Distracted', emoji: '🤷' },         // Distraído
-  { label: 'Insecure', emoji: '😟' },           // Inseguro
-  { label: 'Nervous', emoji: '😰' },            // Nervoso
-  { label: 'Anxious', emoji: '😬' },            // Ansioso
-  { label: 'Shy', emoji: '😳' },                // Tímido
+  { label: 'Composed', emoji: '🥶' }, // Frieza
+  { label: 'Focused', emoji: '🧘‍♂️' }, // Concentrado
+  { label: 'Confident', emoji: '😎' }, // Confiante
+  { label: 'Stressed', emoji: '😤' }, // Estressado
+  { label: 'Provocative', emoji: '🤫' }, // Provocador
+  { label: 'Distracted', emoji: '🤷' }, // Distraído
+  { label: 'Insecure', emoji: '😟' }, // Inseguro
+  { label: 'Nervous', emoji: '😰' }, // Nervoso
+  { label: 'Anxious', emoji: '😬' }, // Ansioso
+  { label: 'Shy', emoji: '😳' }, // Tímido
 ]
 
 // posso manter apenas no frontend?
 export const physicalConditions: RatingOption[] = [
-  { label: 'Powerful', emoji: '🏋️‍♂️' },           // Potente
-  { label: 'Agile', emoji: '🏃‍♂️' },              // Ágil
-  { label: 'Enduring', emoji: '🛡️' },           // Resistente
-  { label: 'Explosive', emoji: '⚡' },           // Explosivo
-  { label: 'Weak', emoji: '🥺' },               // Fraco
-  { label: 'Slow', emoji: '🐌' },               // Lento
-  { label: 'Tired', emoji: '😩' },              // Cansado
-  { label: 'Injured', emoji: '🤕' },            // Lesionado
+  { label: 'Powerful', emoji: '🏋️‍♂️' }, // Potente
+  { label: 'Agile', emoji: '🏃‍♂️' }, // Ágil
+  { label: 'Enduring', emoji: '🛡️' }, // Resistente
+  { label: 'Explosive', emoji: '⚡' }, // Explosivo
+  { label: 'Weak', emoji: '🥺' }, // Fraco
+  { label: 'Slow', emoji: '🐌' }, // Lento
+  { label: 'Tired', emoji: '😩' }, // Cansado
+  { label: 'Injured', emoji: '🤕' }, // Lesionado
 ]
 
 export interface Skill {
@@ -43,7 +43,11 @@ export interface Skill {
   description: string
 }
 
-type FundamentalProgression = 'beginner' | 'intermediate' | 'advanced' | 'professional'
+type FundamentalProgression =
+  | 'iniciante'
+  | 'intermediário'
+  | 'avançado'
+  | 'profissional'
 type FundamentalProgressionValue = 25 | 50 | 75 | 100
 export interface Fundamentals extends Skill {
   progressionDescription: FundamentalProgression
@@ -51,7 +55,11 @@ export interface Fundamentals extends Skill {
 }
 
 type ResourceProgressionValue = 0 | 1 | 2 | 3
-type ResourceProgression = 'unfamiliar' | 'developing' | 'confident' | 'elite'
+type ResourceProgression =
+  | 'não sabe'
+  | 'em desenvolvimento'
+  | 'confiante'
+  | 'elite'
 export interface Resources extends Skill {
   progressionDescription: ResourceProgression
   progressionValue: ResourceProgressionValue

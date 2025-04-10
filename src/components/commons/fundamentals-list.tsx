@@ -7,13 +7,13 @@ import { Progress } from '../ui/progress'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion'
 import { capitalizeFirstLetter } from '@/utils/capitalize'
 
-interface SkillListProps {
+interface FundamentalsListProps {
   fundamentals: Fundamentals[]
 }
 
 export const FundamentalsList = ({
   fundamentals,
-}: SkillListProps) => {
+}: FundamentalsListProps) => {
   return (
     <Card>
       <CardHeader>
@@ -32,7 +32,7 @@ export const FundamentalsList = ({
                       </div>
                       <div className='flex items-center gap-2'>
                         <Badge variant='outline'>
-                          {capitalizeFirstLetter(fundamental.fundamentalProgression)}
+                          {capitalizeFirstLetter(fundamental.progressionDescription)}
                         </Badge>
                         <AccordionTrigger className="p-0 cursor-pointer">
                           <span className="sr-only">Accordion toggle</span>
@@ -40,7 +40,7 @@ export const FundamentalsList = ({
                       </div>
                     </div>
                     <Progress
-                      value={fundamental.fundamentalProgressionValue}
+                      value={fundamental.progressionValue}
                       className='h-2'
                     />
                   </div>

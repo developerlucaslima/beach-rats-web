@@ -1,12 +1,16 @@
 import { Star } from 'lucide-react'
 
+import { cn } from '@/utils/cn'
+
 interface StarsProgressProps {
+  className?: string
   filledStars: number
   maxStars: number
   size: number
 }
 
 export const StarsProgress = ({
+  className,
   filledStars,
   maxStars,
   size,
@@ -17,8 +21,11 @@ export const StarsProgress = ({
       <Star
         key={i}
         size={size}
-        className={`${i < filledStars ? 'text-primary fill-current' : 'text-muted-foreground'}`}
-        strokeWidth={1.5}
+        className={cn(
+          `${i < filledStars ? 'text-primary fill-primary' : 'text-muted-foreground'}`,
+          className,
+        )}
+        strokeWidth={1}
       />,
     )
   }

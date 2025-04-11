@@ -217,17 +217,17 @@ function PlayerCardFooter({
 }
 
 export {
+  PlayerCardAtribute,
+  PlayerCardAtributes,
   PlayerCardComposition,
+  PlayerCardEmoji,
+  PlayerCardFooter,
   PlayerCardHeader,
+  PlayerCardImage,
+  PlayerCardModality,
+  PlayerCardName,
   PlayerCardOverall,
+  PlayerCardTitle,
   PlayerCardTopLeft,
   PlayerCardTopRight,
-  PlayerCardEmoji,
-  PlayerCardImage,
-  PlayerCardTitle,
-  PlayerCardName,
-  PlayerCardModality,
-  PlayerCardAtributes,
-  PlayerCardAtribute,
-  PlayerCardFooter,
 }

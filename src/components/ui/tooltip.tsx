@@ -93,9 +93,9 @@ function TooltipContent({
 }
 
 export {
-  Tooltip,
   ClickableTooltip,
-  TooltipTrigger,
+  Tooltip,
   TooltipContent,
   TooltipProvider,
+  TooltipTrigger,
 }

@@ -30,17 +30,17 @@ interface PlayerProps {
   mentalCondition: RatingOption
 }
 
-interface PlayerCardComponentProps {
+interface PlayerCardProps {
   player: PlayerProps
   atributes: CardAttributes
   modality: Modality
 }
 
-export const PlayerCardComponent = ({
+export const PlayerCard = ({
   player,
   atributes,
   modality,
-}: PlayerCardComponentProps) => {
+}: PlayerCardProps) => {
   const {
     cardType,
     overall,
@@ -107,7 +107,6 @@ export const PlayerCardComponent = ({
         <PlayerCardName>{name.toUpperCase()}</PlayerCardName>
       </PlayerCardTitle>
 
-      {/* Card Atributes */}
       <PlayerCardAtributes>
         {atributesArray.map(({ abbreviation, description, value }) => (
           <PlayerCardAtribute

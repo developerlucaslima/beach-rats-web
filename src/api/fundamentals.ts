@@ -8,7 +8,7 @@ export const fundamentals: Fundamentals[] = [
     progressionValue: 50,
     modality: ['futevôlei'],
     skillType: ['ataque'],
-    description: 'Cabeceio forte com precisão.',
+    description: 'Ataque de cabeça, jogando a bola por cima do adversário.',
   },
   {
     name: 'Paralela',
@@ -17,7 +17,7 @@ export const fundamentals: Fundamentals[] = [
     progressionValue: 50,
     modality: ['futevôlei'],
     skillType: ['ataque'],
-    description: 'Cabeceio forte com precisão.',
+    description: 'Ataque de cabeça, direcionando a bola paralelamente à linha lateral.',
   },
   {
     name: 'Diagonal longa',
@@ -26,7 +26,7 @@ export const fundamentals: Fundamentals[] = [
     progressionValue: 50,
     modality: ['futevôlei'],
     skillType: ['ataque'],
-    description: 'Cabeceio forte com precisão.',
+    description: 'Ataque de cabeça, direcionando a bola em diagonal até o fundo da quadra.',
   },
   {
     name: 'Diagonal curta',
@@ -35,7 +35,7 @@ export const fundamentals: Fundamentals[] = [
     progressionValue: 50,
     modality: ['futevôlei'],
     skillType: ['ataque'],
-    description: 'Cabeceio forte com precisão.',
+    description: 'Ataque de cabeça, direcionando a bola em diagonal próxima à rede.',
   },
   {
     name: 'Pingo',

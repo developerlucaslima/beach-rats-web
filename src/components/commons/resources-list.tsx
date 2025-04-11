@@ -8,7 +8,13 @@ import {
   AccordionTrigger,
 } from '../ui/accordion'
 import { Badge } from '../ui/badge'
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '../ui/card'
 import { StarsProgress } from '../ui/stars-progress'
 
 interface ResourcesListProps {
@@ -20,6 +26,10 @@ export const ResourcesList = ({ resources }: ResourcesListProps) => {
     <Card>
       <CardHeader>
         <CardTitle>Recursos</CardTitle>
+        <CardDescription>
+          Manobras avançadas e fintas que enriquecem o jogador, tornando-o mais
+          imprevisível e deixando o jogo mais divertido.
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <ul className="space-y-2">
@@ -63,7 +73,7 @@ export const ResourcesList = ({ resources }: ResourcesListProps) => {
                           className="text-xs"
                           key={type}
                         >
-                          {type === 'attack' ? 'Ataque' : 'Defesa'}
+                          {capitalizeFirstLetter(type)}
                         </Badge>
                       ))}
                     </div>

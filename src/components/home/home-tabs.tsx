@@ -9,23 +9,22 @@ import { ResourcesList } from '../commons/resources-list'
 import { Card, CardDescription, CardHeader, CardTitle } from '../ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs'
 
-export const TabsHomeMobileFirst = () => {
+export const HomeTabs = () => {
   return (
-    <Tabs defaultValue="player-card" className="min-h-screen w-full">
+    <Tabs defaultValue="player-card" className="w-full">
       <TabsList className="flex w-full items-center justify-between">
-        <TabsTrigger value="player-card">Carta do jogador</TabsTrigger>
+        <TabsTrigger value="player-card">Carta</TabsTrigger>
         <TabsTrigger value="fundamentals-list">Fundamentos</TabsTrigger>
         <TabsTrigger value="resources-list">Recursos</TabsTrigger>
-        {/* <TabsTrigger value="player-chart">Gráfico de radar</TabsTrigger> */}
       </TabsList>
 
       <TabsContent value="player-card">
-        <Card>
+        <Card className="h-full">
           <CardHeader>
-            <CardTitle>Player Card</CardTitle>
+            <CardTitle>Carta</CardTitle>
             <CardDescription>
-              Carta de habilidade do jogador. Notas são baseadas na média total
-              de cada atributo.
+              Carta de habilidade. Notas são baseadas na média total de cada
+              atributo.
             </CardDescription>
           </CardHeader>
           <PlayerCard
@@ -41,7 +40,7 @@ export const TabsHomeMobileFirst = () => {
           <CardHeader>
             <CardTitle>Fundamentos</CardTitle>
             <CardDescription>
-              Técnicas fundamentais que formam a base do bom jogador.
+              Técnicas fundamentais que formam sua base do esporte.
             </CardDescription>
           </CardHeader>
           <FundamentalsList fundamentals={sampleUserProfile.fundamentals} />
@@ -49,7 +48,16 @@ export const TabsHomeMobileFirst = () => {
       </TabsContent>
 
       <TabsContent value="resources-list">
-        <ResourcesList resources={sampleUserProfile.resources} />
+        <Card>
+          <CardHeader>
+            <CardTitle>Recursos</CardTitle>
+            <CardDescription>
+              Fintas avançadas que enriquecem o jogo, tornando-o mais
+              imprevisível e divertido.
+            </CardDescription>
+          </CardHeader>
+          <ResourcesList resources={sampleUserProfile.resources} />
+        </Card>
       </TabsContent>
     </Tabs>
   )

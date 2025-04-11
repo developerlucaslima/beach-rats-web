@@ -6,7 +6,8 @@ import type { CardType } from '@/types'
 import { cn } from '@/utils/cn'
 
 import { badgeVariants } from './badge'
-import { ClickableTooltip, TooltipContent } from './tooltip'
+import { ClickableTooltip } from './clickable-tooltip'
+import { TooltipContent } from './tooltip'
 
 interface PlayerCardType {
   cardType: CardType

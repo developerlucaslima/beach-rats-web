@@ -30,7 +30,7 @@ export default function RootLayout({
       >
         <Providers >
           <Header />
-          <div className="container mx-auto flex max-w-sm overflow-hidden">
+          <div className="container mx-auto flex-1 flex overflow-hidden">
             {children}
           </div>
         </Providers>

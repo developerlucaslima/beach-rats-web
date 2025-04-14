@@ -1,7 +1,6 @@
 import Image from 'next/image'
 
 import { Badge } from '@/components/ui/badge'
-import { CardContent } from '@/components/ui/card'
 import {
   PlayerCardAtribute,
   type PlayerCardAtributeProps,
@@ -19,115 +18,110 @@ import {
   PlayerCardTopRight,
 } from '@/components/ui/player-card-composition'
 import { StarsProgress } from '@/components/ui/stars-progress'
-import { CardAttributes, Modality, RatingOption } from '@/types'
+import type { CardType, CategoryProgression, LabelAndEmoji, Modality } from '@/types'
 import { capitalizeFirstLetter } from '@/utils/capitalize'
 import { cn } from '@/utils/cn'
 
-interface PlayerProps {
-  name: string
-  profileImage: string
-  country: string
-  physicalCondition: RatingOption
-  mentalCondition: RatingOption
-}
-
 interface PlayerCardProps {
-  player: PlayerProps
-  atributes: CardAttributes
   modality: Modality
+  cardType: CardType
+  currentCategory: CategoryProgression
+  overall: number
+  name: string
+  country: LabelAndEmoji
+  profileImage: string
+  physicalCondition: LabelAndEmoji
+  mentalCondition: LabelAndEmoji
+  attack: number
+  defense: number
+  fundamental: number
+  resource: number
+  stars: number
 }
 
 export const PlayerCard = ({
-  player,
-  atributes,
   modality,
+  cardType,
+  currentCategory,
+  overall,
+  name,
+  profileImage,
+  attack,
+  defense,
+  fundamental,
+  resource,
+  stars,
+  country,
+  physicalCondition,
+  mentalCondition,
 }: PlayerCardProps) => {
-  const {
-    cardType,
-    overall,
-    category,
-    attack,
-    defense,
-    fundamental,
-    resource,
-    stars,
-  } = atributes
-  const {
-    name,
-    country,
-    profileImage,
-    physicalCondition: { emoji: physicalEmoji, label: physicalLabel },
-    mentalCondition: { emoji: mentalEmoji, label: mentalLabel },
-  } = player
   const atributesArray: PlayerCardAtributeProps[] = [
-    { description: 'Média de ataque', abbreviation: 'ATA', value: attack },
-    { description: 'Média de defesa', abbreviation: 'DEF', value: defense },
+    { label: 'Média de ataque', abbreviation: 'ATA', value: attack },
+    { label: 'Média de defesa', abbreviation: 'DEF', value: defense },
     {
-      description: 'Média dos fundamentos',
+      label: 'Média dos fundamentos',
       abbreviation: 'FUN',
       value: fundamental,
     },
-    { description: 'Média dos recursos', abbreviation: 'REC', value: resource },
+    { label: 'Média dos recursos', abbreviation: 'REC', value: resource },
     {
-      description: `Físico: ${physicalLabel}`,
+      label: `Físico: ${physicalCondition.label}`,
       abbreviation: 'FÍS',
-      value: physicalEmoji,
+      value: physicalCondition.emoji,
     },
     {
-      description: `Mental: ${mentalLabel}`,
+      label: `Mental: ${mentalCondition.label}`,
       abbreviation: 'MEN',
-      value: mentalEmoji,
+      value: mentalCondition.emoji,
     },
   ]
 
   return (
-    <CardContent>
-      <PlayerCardComposition cardType={cardType} className={cn('relative')}>
-        <PlayerCardHeader>
-          <PlayerCardTopLeft>
-            <PlayerCardOverall>{overall}</PlayerCardOverall>
-          </PlayerCardTopLeft>
-          <PlayerCardTopRight>
-            <Badge variant={cardType}>{capitalizeFirstLetter(category)}</Badge>
-            <PlayerCardEmoji>{country}</PlayerCardEmoji>
-          </PlayerCardTopRight>
-        </PlayerCardHeader>
+    <PlayerCardComposition cardType={cardType} className={cn('relative')}>
+      <PlayerCardHeader>
+        <PlayerCardTopLeft>
+          <PlayerCardOverall>{overall}</PlayerCardOverall>
+        </PlayerCardTopLeft>
+        <PlayerCardTopRight>
+          <Badge variant={cardType}>{capitalizeFirstLetter(currentCategory)}</Badge>
+          <PlayerCardEmoji>{country.emoji}</PlayerCardEmoji>
+        </PlayerCardTopRight>
+      </PlayerCardHeader>
 
-        <PlayerCardImage>
-          <Image
-            src={profileImage || '/placeholder.svg'}
-            alt={name}
-            fill
-            className="object-cover"
+      <PlayerCardImage>
+        <Image
+          src={profileImage}
+          alt={name}
+          fill
+          className="object-cover"
+        />
+      </PlayerCardImage>
+
+      <PlayerCardTitle>
+        <PlayerCardModality cardType={cardType}>
+          {capitalizeFirstLetter(modality)}
+        </PlayerCardModality>
+        <PlayerCardName>{name.toUpperCase()}</PlayerCardName>
+      </PlayerCardTitle>
+
+      <PlayerCardAtributes>
+        {atributesArray.map(({ abbreviation, label, value }) => (
+          <PlayerCardAtribute
+            key={abbreviation}
+            abbreviation={abbreviation}
+            label={label}
+            value={value}
           />
-        </PlayerCardImage>
-
-        <PlayerCardTitle>
-          <PlayerCardModality cardType={cardType}>
-            {capitalizeFirstLetter(modality)}
-          </PlayerCardModality>
-          <PlayerCardName>{name.toUpperCase()}</PlayerCardName>
-        </PlayerCardTitle>
-
-        <PlayerCardAtributes>
-          {atributesArray.map(({ abbreviation, description, value }) => (
-            <PlayerCardAtribute
-              key={abbreviation}
-              abbreviation={abbreviation}
-              description={description}
-              value={value}
-            />
-          ))}
-        </PlayerCardAtributes>
-        <PlayerCardFooter>
-          <StarsProgress
-            maxStars={3}
-            filledStars={stars}
-            size={20}
-            className="text-background/80"
-          />
-        </PlayerCardFooter>
-      </PlayerCardComposition>
-    </CardContent>
+        ))}
+      </PlayerCardAtributes>
+      <PlayerCardFooter>
+        <StarsProgress
+          maxStars={3}
+          filledStars={stars}
+          size={20}
+          className="text-background/80"
+        />
+      </PlayerCardFooter>
+    </PlayerCardComposition>
   )
 }

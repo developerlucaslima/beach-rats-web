@@ -147,7 +147,7 @@ function PlayerCardModality({
   const variant = cardType !== 'professional' ? 'secondary_outline' : 'outline'
   return (
     <Comp
-      data-slot="player-card-description"
+      data-slot="player-card-label"
       className={cn(badgeVariants({ variant }), className)}
       {...props}
     />
@@ -178,12 +178,12 @@ function PlayerCardAtributes({
 export interface PlayerCardAtributeProps {
   abbreviation: string
   value: string | number
-  description: string
+  label: string
 }
 function PlayerCardAtribute({
   abbreviation,
   value,
-  description,
+  label,
 }: PlayerCardAtributeProps) {
   return (
     <ClickableTooltip
@@ -195,7 +195,7 @@ function PlayerCardAtribute({
         <p className="font-regular">{abbreviation}</p>
       </div>
       <TooltipContent>
-        <p>{description}</p>
+        <p>{label}</p>
       </TooltipContent>
     </ClickableTooltip>
   )

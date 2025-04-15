@@ -3,7 +3,6 @@ import { headerActionsConfig } from "./config";
 import { HeaderActions } from "./header-actions";
 import { headerNavigationConfig } from "./navigation/config";
 import { DesktopNavigation } from "./navigation/desktop-navigation";
-import { MobileNavigation } from "./navigation/mobile-navigation";
 
 export const Header = () => {
   return (
@@ -12,7 +11,6 @@ export const Header = () => {
         <BeachRatsLogo />
         <DesktopNavigation headerNavigationConfig={headerNavigationConfig} />
         <HeaderActions headerActionsConfig={headerActionsConfig} />
-        <MobileNavigation headerNavigationConfig={headerNavigationConfig} />
       </div>
     </header>
   )

@@ -3,6 +3,8 @@ import Link from "next/link"
 import { ProfileAvatarDropdown } from "../profile-dropdown"
 import { Button } from "../ui/button"
 import type { HeaderActionsConfigProps } from "./config"
+import { headerNavigationConfig } from "./navigation/config"
+import { MobileNavigation } from "./navigation/mobile-navigation"
 
 export interface HeaderActionsProps {
   headerActionsConfig: HeaderActionsConfigProps[]
@@ -10,7 +12,7 @@ export interface HeaderActionsProps {
 
 export const HeaderActions = ({ headerActionsConfig }: HeaderActionsProps) => {
   return (
-    <nav className="hidden md:flex items-center gap-1">
+    <nav className="flex items-center gap-1">
       {headerActionsConfig.map((item) => (
         <Button key={item.title} asChild variant='ghost' size='sm'>
           <Link href={item.title} aria-label={item.title}>
@@ -19,6 +21,7 @@ export const HeaderActions = ({ headerActionsConfig }: HeaderActionsProps) => {
         </Button>
       ))}
       <ProfileAvatarDropdown />
+      <MobileNavigation headerNavigationConfig={headerNavigationConfig} />
     </nav>
   )
 }

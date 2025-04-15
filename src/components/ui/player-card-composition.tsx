@@ -21,7 +21,7 @@ function PlayerCardComposition({
     <div
       data-slot="player-card"
       className={cn(
-        `flex flex-col overflow-hidden rounded-xl border p-4 pt-24`,
+        `flex flex-col overflow-hidden rounded-xl border p-4 pt-18 min-w-sm max-w-md`,
         `texture-${cardType} shine-${cardType}`,
         `text-${cardType !== 'professional' ? 'background' : 'foreground'}`,
         className,
@@ -135,7 +135,7 @@ function PlayerCardName({ className, ...props }: React.ComponentProps<'div'>) {
   )
 }
 
-function PlayerCardModality({
+function PlayerCardBadge({
   cardType,
   className,
   asChild = false,
@@ -144,7 +144,7 @@ function PlayerCardModality({
   React.ComponentProps<'span'> &
   VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
   const Comp = asChild ? Slot : 'span'
-  const variant = cardType !== 'professional' ? 'secondary_outline' : 'outline'
+  const variant = cardType !== 'professional' ? 'secondary' : 'outline'
   return (
     <Comp
       data-slot="player-card-label"
@@ -220,12 +220,12 @@ function PlayerCardFooter({
 export {
   PlayerCardAtribute,
   PlayerCardAtributes,
+  PlayerCardBadge,
   PlayerCardComposition,
   PlayerCardEmoji,
   PlayerCardFooter,
   PlayerCardHeader,
   PlayerCardImage,
-  PlayerCardModality,
   PlayerCardName,
   PlayerCardOverall,
   PlayerCardTitle,

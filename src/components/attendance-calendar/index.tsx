@@ -11,9 +11,9 @@ export const AttendanceCalendar = () => {
   ]
 
   return (
-    <Card className="min-w-sm">
+    <Card className="w-full xl:max-w-md">
       <CardHeader>
-        <CardTitle>Calendário de presença</CardTitle>
+        <CardTitle>Dev Lucas Lima? Presente!</CardTitle>
       </CardHeader>
       <CardContent className="mx-auto" >
         <Calendar

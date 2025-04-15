@@ -4,9 +4,9 @@ import { UpcomingEvents } from "./upcoming-events"
 
 export const ScheduleOverview = () => {
   return (
-    <Card className="flex-1 min-w-sm">
+    <Card className="flex-1">
       <CardHeader>
-        <CardTitle>Hora de suar! Veja o que te espera...</CardTitle>
+        <CardTitle>Hora de suar</CardTitle>
       </CardHeader>
       <CardContent className="flex">
         <UpcomingEvents />

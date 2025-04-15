@@ -1,37 +1,26 @@
-export type Modality = 'futevôlei' | 'altinha'
 export type SkillType = 'ataque' | 'defesa'
-export type ProficiencyLevel = 'não sabe' | 'sabe' | 'masterizou'
+export type Modality = 'futevôlei' | 'altinha'
 export type DominantFoot = 'direito' | 'esquerdo' | 'ambos'
 export type CourtSide = 'direita' | 'esquerda' | 'ambos'
 
-export interface RatingOption {
+export interface LabelAndEmoji {
   label: string
   emoji: string
 }
 
 export type CardType = 'bronze' | 'silver' | 'gold' | 'professional'
-type CategoryProgression =
+export type CategoryProgression =
   | 'iniciante'
   | 'intermediário'
   | 'avançado'
   | 'profissional'
 
-type ResourceProgression =
+export type ResourceProgression =
   | 'não sabe'
   | 'em desenvolvimento'
   | 'confiante'
   | 'elite'
 
-export interface CardAttributes {
-  attack: number
-  defense: number
-  fundamental: number
-  resource: number
-  stars: number
-  cardType: CardType
-  category: CategoryProgression
-  overall: number
-}
 
 export interface Skill {
   name: string
@@ -58,15 +47,32 @@ export interface UserProfile {
   id: string
   name: string
   email: string
-  country: string
+  bio: string
+  country: LabelAndEmoji
   city: string
   age: string
   profileImage: string
-  preferredModality: Modality
   courtSide: CourtSide
   dominantFoot: DominantFoot
+  modalities: Modality[]
+  location: {
+    latitude: number
+    longitude: number
+  }
+}
+
+export interface PlayerAtributes {
+  id: string
   fundamentals: Fundamentals[]
   resources: Resources[]
-  mentalCondition: RatingOption
-  physicalCondition: RatingOption
+  mentalCondition: LabelAndEmoji
+  physicalCondition: LabelAndEmoji
+  attack: number
+  defense: number
+  fundamental: number
+  resource: number
+  stars: number
+  cardType: CardType
+  currentCategory: CategoryProgression
+  overall: number
 }

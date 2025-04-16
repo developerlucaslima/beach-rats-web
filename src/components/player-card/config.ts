@@ -1,16 +1,16 @@
 import type { PlayerCardAtributeProps } from '@/components/ui/player-card-composition'
 import type {
   CardType,
-  CategoryProgression,
+  Categories,
   LabelAndEmoji,
-  Modality,
+  Modalities,
 } from '@/types'
 
 
 export interface PlayerCardConfig {
-  modality: Modality
+  modality: Modalities
   cardType: CardType
-  currentCategory: CategoryProgression
+  currentCategory: Categories
   overall: number
   name: string
   profileImage: string
@@ -31,10 +31,10 @@ const mock = {
 
 export const playerCardConfig: PlayerCardConfig = {
   modality: 'futevôlei',
-  cardType: 'silver',
+  cardType: 'beginner',
   currentCategory: 'intermediário',
   overall: 85,
-  name: 'Lucas Lima',
+  name: 'Dev Lucas Lima',
   profileImage: 'https://github.com/developerlucaslima.png',
   country: mock.country,
   stars: 3,

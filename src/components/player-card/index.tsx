@@ -44,7 +44,7 @@ export const PlayerCard = () => {
           <PlayerCardBadge cardType={cardType}>
             {modality.toUpperCase() + ' - ' + currentCategory.toUpperCase()}
           </PlayerCardBadge>
-          <PlayerCardEmoji>{country.emoji}</PlayerCardEmoji>
+          <PlayerCardEmoji label={country.label}>{country.emoji}</PlayerCardEmoji>
         </PlayerCardTopRight>
       </PlayerCardHeader>
 

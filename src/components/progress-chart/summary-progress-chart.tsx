@@ -11,7 +11,7 @@ export function SummaryProgressChart() {
     <Card>
       <CardHeader>
         <CardTitle>
-          Gráfico de progresso no Futevôlei
+          Seu progresso no Futevôlei
         </CardTitle>
       </CardHeader>
       <CardContentBorder>

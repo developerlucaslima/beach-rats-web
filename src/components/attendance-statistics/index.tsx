@@ -6,10 +6,10 @@ export const AttendanceStatistics = () => {
     <Card className="w-full">
       <CardHeader>
         <CardTitle>
-          Seu progresso até agora
+          Seu progresso geral
         </CardTitle>
       </CardHeader>
-      <CardContent className="grid gap-4 sm:grid-cols-3">
+      <CardContent className="flex flex-1 items-center justify-around">
         <AttendanceStatisticsItems />
       </CardContent>
     </Card>

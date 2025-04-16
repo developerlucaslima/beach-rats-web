@@ -1,4 +1,4 @@
-import { type LucideIcon, Sword, Swords, Zap } from "lucide-react"
+import { type LucideIcon, Sword, Swords, Trophy, Zap } from "lucide-react"
 
 interface AttendanceStatsConfigProps {
   icon: LucideIcon
@@ -21,5 +21,10 @@ export const attendanceStatsConfig: AttendanceStatsConfigProps[] = [
     icon: Swords,
     value: 13,
     description: 'Partidas disputadas',
+  },
+  {
+    icon: Trophy,
+    value: 3,
+    description: 'Premiações',
   },
 ]

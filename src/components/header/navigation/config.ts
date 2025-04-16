@@ -1,4 +1,4 @@
-import { CalendarCheck, type LucideIcon, ShieldUser, Swords } from "lucide-react"
+import { ChartSpline, type LucideIcon, SquareChartGantt, Star, Swords } from "lucide-react"
 
 export interface HeaderNavigationConfigProps {
   icon: LucideIcon
@@ -8,18 +8,23 @@ export interface HeaderNavigationConfigProps {
 
 export const headerNavigationConfig: HeaderNavigationConfigProps[] = [
   {
-    icon: ShieldUser,
-    title: 'Jogador',
-    href: '/player'
+    icon: SquareChartGantt,
+    title: 'Início',
+    href: '/'
+  },
+  {
+    icon: Star,
+    title: 'Habilidades',
+    href: '/skills'
+  },
+  {
+    icon: ChartSpline,
+    title: 'Progresso',
+    href: '/progress'
   },
   {
     icon: Swords,
     title: 'Arena',
     href: '/arena'
-  },
-  {
-    icon: CalendarCheck,
-    title: 'Agenda',
-    href: '/schedule'
   }
 ]

@@ -89,13 +89,25 @@ function PlayerCardTopRight({
   )
 }
 
-function PlayerCardEmoji({ className, ...props }: React.ComponentProps<'div'>) {
+export interface PlayerCardEmojiProps {
+  label: string
+}
+function PlayerCardEmoji({ label, className, ...props }: PlayerCardEmojiProps & React.ComponentProps<'div'>) {
   return (
-    <div
-      data-slot="player-card-emoji"
-      className={cn('text-4xl', className)}
-      {...props}
-    />
+    <ClickableTooltip
+      className="flex items-center justify-center"
+    >
+      <div className="flex items-center">
+        <div
+          data-slot="player-card-emoji"
+          className={cn('text-4xl', className)}
+          {...props}
+        />
+      </div>
+      <TooltipContent>
+        <p>{label}</p>
+      </TooltipContent>
+    </ClickableTooltip>
   )
 }
 
@@ -191,7 +203,7 @@ function PlayerCardAtribute({
       className="flex items-center justify-center"
     >
       <div className="flex w-22 items-center">
-        <p className="mr-4 min-w-8 font-bold">{value}</p>
+        <p className="mr-4 min-w-8 font-bold rounded-lg bg-background/20">{value}</p>
         <p className="font-regular">{abbreviation}</p>
       </div>
       <TooltipContent>

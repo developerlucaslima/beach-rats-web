@@ -1,8 +1,36 @@
-import { Button } from "@/components/ui/button"
+'use client'
+
+import { useRouter } from 'next/navigation'
+
+import { Button } from '@/components/ui/button'
+import { handleGoogleCredentialResponse } from '@/config/services/google/handle-google-response'
+import { useAuthStore } from '@/features/auth/stores/use-auth-store'
+
 
 export function GoogleButton() {
+  const router = useRouter()
+  const { setPlayer, logout } = useAuthStore.getState()
+
+  function handleClick() {
+    if (!window.google) return
+
+    window.google.accounts.id.initialize({
+      client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!,
+      callback: (response) => {
+        handleGoogleCredentialResponse(
+          response.credential,
+          setPlayer,
+          logout,
+          router.replace,
+        )
+      },
+    })
+
+    window.google.accounts.id.prompt()
+  }
+
   return (
-    <Button variant="outline" className="w-full" type="button">
+    <Button variant="outline" className="w-full" type="button" onClick={handleClick}>
       <svg
         className="mr-2 h-4 w-4"
         aria-hidden="true"
@@ -18,7 +46,7 @@ export function GoogleButton() {
           d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"
         ></path>
       </svg>
-      Sign in with Google
+      Google
     </Button>
   )
 }

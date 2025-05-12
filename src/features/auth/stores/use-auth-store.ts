@@ -1,25 +1,11 @@
 import { create } from 'zustand'
 
-type PlayerAuthData = {
-  id: string
-  googleId: string | null
-  name: string
-  email: string
-  avatarUrl: string | null
-  bio: string | null
-  age: number | null
-  countryCode: string | null
-  latitude: number | null
-  longitude: number | null
-  mainModalityId: string | null
-  physicalConditionName: string | null
-  mentalConditionName: string | null
-}
+import type { PlayerAuth } from '@/types/player'
 
 type AuthState = {
-  player: PlayerAuthData | null
+  player: PlayerAuth | null
   isAuthenticated: boolean
-  setPlayer: (player: PlayerAuthData) => void
+  setPlayer: (player: PlayerAuth) => void
   logout: () => void
 }
 

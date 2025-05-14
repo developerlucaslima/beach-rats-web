@@ -1,4 +1,5 @@
-import { redirect } from "next/navigation"
+"use client"
+import { useRouter } from 'next/navigation'
 
 import {
   DropdownMenu,
@@ -21,7 +22,9 @@ import { profileDropdownConfig } from "../config/profile-dropdown-config"
 import { ProfileAvatar } from "./profile-avatar"
 
 export function ProfileAvatarDropdown() {
+  const router = useRouter()
   const logout = useAuthStore(state => state.logout)
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -60,9 +63,8 @@ export function ProfileAvatarDropdown() {
                     disabled={item.disabled}
                     onClick={() => {
                       if (item.label === 'Sair') {
-                        // aqui chamamos o logout real
                         logout()
-                        redirect('/sign-in')
+                        router.push('/sign-in')
                       }
                     }}
                   >

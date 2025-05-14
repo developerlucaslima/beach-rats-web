@@ -1,5 +1,5 @@
 import {
-  // LogOut,
+  LogOut,
   LucideIcon,
   Settings,
   User,
@@ -67,15 +67,15 @@ export const profileDropdownConfig: ProfileAvatarDropdownConfigProps = {
         },
       ],
     },
-    // {
-    //   items: [
-    //     {
-    //       icon: LogOut,
-    //       label: "Sair",
-    //       // shortCut: "⇧⌘Q",
-    //       shortCut: "⇧S",
-    //     },
-    //   ],
-    // },
+    {
+      items: [
+        {
+          icon: LogOut,
+          label: "Sair",
+          // shortCut: "⇧⌘Q",
+          shortCut: "⇧S",
+        },
+      ],
+    },
   ],
 }

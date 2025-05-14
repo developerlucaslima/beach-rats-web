@@ -3,7 +3,7 @@ import { toast } from 'sonner'
 
 import { useAuthStore } from '@/features/auth/stores/use-auth-store'
 
-import { env } from '../env'
+import { clientEnv } from '../env/client'
 
 declare module 'axios' {
   export interface InternalAxiosRequestConfig {
@@ -12,7 +12,7 @@ declare module 'axios' {
 }
 
 export const api = axios.create({
-  baseURL: env.ORIGIN_URL,
+  baseURL: clientEnv.NEXT_PUBLIC_API_BASE_URL,
   withCredentials: true,
 })
 

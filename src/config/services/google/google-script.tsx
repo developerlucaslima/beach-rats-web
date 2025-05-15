@@ -9,6 +9,10 @@ export function GoogleScript() {
       async
       defer
       strategy="afterInteractive"
+      onLoad={() => {
+        console.log('✅ Google SDK loaded')
+        window.dispatchEvent(new Event('google-sdk-loaded'))
+      }}
     />
   )
 }

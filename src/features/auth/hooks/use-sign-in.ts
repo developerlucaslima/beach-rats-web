@@ -7,7 +7,7 @@ import { toast } from 'sonner'
 
 import { getErrorMessage } from '@/utils/get-error-message'
 
-import { playerSignIn } from '../services/player-sign-in'
+import { signIn } from '../services/sign-in'
 import { useAuthStore } from '../stores/use-auth-store'
 import type { SignInFormData } from '../types/sing-in'
 
@@ -27,14 +27,14 @@ export function useSignIn() {
   })
 
   const { mutateAsync: playerSignInMutation } = useMutation({
-    mutationFn: playerSignIn,
+    mutationFn: signIn,
   })
 
   async function handleSignIn(data: SignInFormData) {
     try {
       const player = await playerSignInMutation(data)
       setPlayer(player)
-      router.push('/dashboard') 
+      router.push('/dashboard')
     } catch (error: unknown) {
       toast.error(getErrorMessage(error))
     }

@@ -15,7 +15,7 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { useAuthStore } from "@/features/auth/stores/use-auth-store"
+import { useSignOut } from '@/features/auth/hooks/use-sign-out'
 
 import { Button } from "../../../components/ui/button"
 import { profileDropdownConfig } from "../config/profile-dropdown-config"
@@ -23,7 +23,7 @@ import { ProfileAvatar } from "./profile-avatar"
 
 export function ProfileAvatarDropdown() {
   const router = useRouter()
-  const logout = useAuthStore(state => state.logout)
+  const signOut = useSignOut()
 
   return (
     <DropdownMenu>
@@ -63,7 +63,7 @@ export function ProfileAvatarDropdown() {
                     disabled={item.disabled}
                     onClick={() => {
                       if (item.label === 'Sair') {
-                        logout()
+                        signOut()
                         router.push('/sign-in')
                       }
                     }}

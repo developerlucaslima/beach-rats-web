@@ -6,6 +6,6 @@ export interface GoogleAuthOneTapBody {
 }
 
 export async function googleAuthOneTap({ idToken }: GoogleAuthOneTapBody): Promise<PlayerAuth> {
-  const response = await api.post('/auth/google', { idToken })
+  const response = await api.post('/auth/google-one-tap', { idToken })
   return response.data
 }

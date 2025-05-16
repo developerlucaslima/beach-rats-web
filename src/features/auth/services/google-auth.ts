@@ -1,11 +1,12 @@
 import { api } from "@/config/api/axios"
+import type { PlayerAuth } from "@/types/player"
 
 export interface GoogleAuthBody {
-  idToken: string
+  authorizationCode: string
+  redirectUri: string
 }
 
-export async function googleAuth({ idToken }: GoogleAuthBody) {
-  const response = await api.post('/auth/google', { idToken })
-  console.log('Google Auth response:', response)
+export async function googleAuth({ authorizationCode, redirectUri }: GoogleAuthBody): Promise<PlayerAuth> {
+  const response = await api.post('/auth/google', { authorizationCode, redirectUri })
   return response.data
 }

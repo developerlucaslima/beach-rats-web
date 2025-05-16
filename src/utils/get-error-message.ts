@@ -1,6 +1,8 @@
 import { AxiosError } from 'axios'
 
-import type { ApiErrorResponse } from '@/config/api/axios'
+export type ApiErrorResponse = {
+  message: string
+}
 
 export function getErrorMessage(error: unknown): string {
   if (isAxiosErrorWithMessage(error)) {

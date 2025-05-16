@@ -1,6 +1,7 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios'
 import { toast } from 'sonner'
 
+import { signOut } from '@/features/auth/services/sign-out'
 import { useAuthStore } from '@/features/auth/stores/use-auth-store'
 
 import { clientEnv } from '../env/client'
@@ -16,23 +17,10 @@ export const api = axios.create({
   withCredentials: true,
 })
 
-api.interceptors.request.use(
-  (config) => {
-    // const accessToken = useAuthStore.getState().accessToken
-    // if (accessToken) {
-    //   config.headers.Authorization = `Bearer ${accessToken}`
-    // }
-    return config
-  },
-  (error) => Promise.reject(error),
-)
-
-// Response interceptor — trata 401, refresh e mensagens
 api.interceptors.response.use(
   (response) => response,
-  async (error: AxiosError<ApiErrorResponse>) => {
+  async (error: AxiosError) => {
     const status = error.response?.status ?? 0
-    const message = error.response?.data?.message ?? ''
     const originalRequest = error.config as InternalAxiosRequestConfig
 
     // Refresh automático se access_token expirou
@@ -43,22 +31,14 @@ api.interceptors.response.use(
         await api.patch('/token/user-refresh')
         return api(originalRequest)
       } catch (refreshError) {
-        useAuthStore.getState().logout()
+        await signOut()
+        useAuthStore.getState().signOut()
         toast.error('Sessão expirada. Faça login novamente.')
         return Promise.reject(refreshError)
       }
-    }
-
-    if (message) {
-      toast.error(message)
-    } else if (status >= 500) {
-      toast.error('Erro interno no servidor.')
     }
 
     return Promise.reject(error)
   },
 )
 
-export type ApiErrorResponse = {
-  message: string
-}

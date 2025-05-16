@@ -4,7 +4,6 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 
 import { Providers } from '@/config/providers'
-import { GoogleScript } from '@/config/services/google/google-script'
 
 const inter = Inter({
   variable: '--font-inter',
@@ -27,8 +26,7 @@ export default function RootLayout({
         className={`${inter.variable} antialiased min-h-screen`}
       >
         <Providers >
-          <GoogleScript />
-            {children}
+          {children}
         </Providers>
       </body>
     </html>

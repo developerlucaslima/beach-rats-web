@@ -1,61 +1,14 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-import { useEffect, useRef } from 'react'
-
 import { Button } from '@/components/ui/button'
-import { api } from '@/config/api/axios'
-import { useAuthStore } from '@/features/auth/stores/use-auth-store'
+
+import { useGoogleAuth } from '../hooks/use-google-auth'
 
 export function GoogleButton() {
-  const router = useRouter()
-  const setPlayer = useAuthStore((state) => state.setPlayer)
-  const codeClientRef = useRef<google.accounts.oauth2.CodeClient>(null)
-
-  useEffect(() => {
-    const script = document.createElement('script')
-    script.src = 'https://accounts.google.com/gsi/client'
-    script.async = true
-    script.defer = true
-    document.body.appendChild(script)
-
-    script.onload = () => {
-      if (!window.google?.accounts?.oauth2) return
-
-      codeClientRef.current = window.google.accounts.oauth2.initCodeClient({
-        client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!,
-        scope: 'openid profile email',
-        ux_mode: 'popup',
-        callback: async (response) => {
-          const { code } = response
-          if (!code) return
-
-          try {
-            const { data } = await api.post('/players/auth/google', {
-              authorizationCode: code,
-              redirectUri: window.location.origin,
-            })
-
-            setPlayer(data.data)
-            router.push('/dashboard')
-          } catch (error) {
-            console.error('Google Auth failed', error)
-          }
-        },
-      })
-    }
-
-    return () => {
-      document.body.removeChild(script)
-    }
-  }, [router, setPlayer])
-
-  const handleClick = () => {
-    codeClientRef.current?.requestCode()
-  }
+  const { requestCode } = useGoogleAuth()
 
   return (
-    <Button onClick={handleClick} variant="outline" className="w-full" type="button">
+    <Button onClick={requestCode} variant="outline" className="w-full" type="button">
       <svg
         className="mr-2 h-4 w-4"
         aria-hidden="true"

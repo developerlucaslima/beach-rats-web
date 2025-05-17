@@ -2,12 +2,12 @@ import { z } from 'zod'
 
 const rawClientEnv = {
   NEXT_PUBLIC_GOOGLE_CLIENT_ID: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-  NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL,
+  NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL || 'http://127.0.0.1:1010',
 }
 
 const clientEnvSchema = z.object({
   NEXT_PUBLIC_GOOGLE_CLIENT_ID: z.string().min(1),
-  NEXT_PUBLIC_API_BASE_URL: z.string().url().default('http://127.0.0.1:1010'),
+  NEXT_PUBLIC_API_BASE_URL: z.string().url(),
 })
 
 const _clientEnv = clientEnvSchema.safeParse(rawClientEnv)

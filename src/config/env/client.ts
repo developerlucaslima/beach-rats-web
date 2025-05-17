@@ -7,7 +7,7 @@ const rawClientEnv = {
 
 const clientEnvSchema = z.object({
   NEXT_PUBLIC_GOOGLE_CLIENT_ID: z.string().min(1),
-  NEXT_PUBLIC_API_BASE_URL: z.string().url(),
+  NEXT_PUBLIC_API_BASE_URL: z.string().url().default('http://127.0.0.1:1010'),
 })
 
 const _clientEnv = clientEnvSchema.safeParse(rawClientEnv)

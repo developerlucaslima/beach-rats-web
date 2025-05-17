@@ -6,7 +6,8 @@ import type { CardType } from '@/types'
 import { cn } from '@/utils/cn'
 
 import { badgeVariants } from './badge'
-import { ClickableTooltip, TooltipContent } from './tooltip'
+import { ClickableTooltip } from './clickable-tooltip'
+import { TooltipContent } from './tooltip'
 
 interface PlayerCardType {
   cardType: CardType
@@ -20,9 +21,9 @@ function PlayerCardComposition({
     <div
       data-slot="player-card"
       className={cn(
-        `flex flex-col overflow-hidden rounded-xl border p-4 pt-24`,
+        `flex flex-col overflow-hidden rounded-xl border p-4 pt-18 min-w-sm max-w-md`,
         `texture-${cardType} shine-${cardType}`,
-        `text-${cardType !== 'professional' ? 'background' : 'foreground'}`,
+        `text-${cardType !== 'pro' ? 'background' : 'foreground'}`,
         className,
       )}
       {...props}
@@ -88,13 +89,25 @@ function PlayerCardTopRight({
   )
 }
 
-function PlayerCardEmoji({ className, ...props }: React.ComponentProps<'div'>) {
+export interface PlayerCardEmojiProps {
+  label: string
+}
+function PlayerCardEmoji({ label, className, ...props }: PlayerCardEmojiProps & React.ComponentProps<'div'>) {
   return (
-    <div
-      data-slot="player-card-emoji"
-      className={cn('text-4xl', className)}
-      {...props}
-    />
+    <ClickableTooltip
+      className="flex items-center justify-center"
+    >
+      <div className="flex items-center">
+        <div
+          data-slot="player-card-emoji"
+          className={cn('text-4xl', className)}
+          {...props}
+        />
+      </div>
+      <TooltipContent>
+        <p>{label}</p>
+      </TooltipContent>
+    </ClickableTooltip>
   )
 }
 
@@ -134,7 +147,7 @@ function PlayerCardName({ className, ...props }: React.ComponentProps<'div'>) {
   )
 }
 
-function PlayerCardModality({
+function PlayerCardBadge({
   cardType,
   className,
   asChild = false,
@@ -143,10 +156,10 @@ function PlayerCardModality({
   React.ComponentProps<'span'> &
   VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
   const Comp = asChild ? Slot : 'span'
-  const variant = cardType !== 'professional' ? 'secondary_outline' : 'outline'
+  const variant = cardType !== 'pro' ? 'secondary' : 'outline'
   return (
     <Comp
-      data-slot="player-card-description"
+      data-slot="player-card-label"
       className={cn(badgeVariants({ variant }), className)}
       {...props}
     />
@@ -177,12 +190,12 @@ function PlayerCardAtributes({
 export interface PlayerCardAtributeProps {
   abbreviation: string
   value: string | number
-  description: string
+  label: string
 }
 function PlayerCardAtribute({
   abbreviation,
   value,
-  description,
+  label,
 }: PlayerCardAtributeProps) {
   return (
     <ClickableTooltip
@@ -190,11 +203,11 @@ function PlayerCardAtribute({
       className="flex items-center justify-center"
     >
       <div className="flex w-22 items-center">
-        <p className="mr-4 min-w-8 font-bold">{value}</p>
+        <p className="mr-4 min-w-8 font-bold rounded-lg bg-background/20">{value}</p>
         <p className="font-regular">{abbreviation}</p>
       </div>
       <TooltipContent>
-        <p>{description}</p>
+        <p>{label}</p>
       </TooltipContent>
     </ClickableTooltip>
   )
@@ -217,17 +230,17 @@ function PlayerCardFooter({
 }
 
 export {
+  PlayerCardAtribute,
+  PlayerCardAtributes,
+  PlayerCardBadge,
   PlayerCardComposition,
+  PlayerCardEmoji,
+  PlayerCardFooter,
   PlayerCardHeader,
+  PlayerCardImage,
+  PlayerCardName,
   PlayerCardOverall,
+  PlayerCardTitle,
   PlayerCardTopLeft,
   PlayerCardTopRight,
-  PlayerCardEmoji,
-  PlayerCardImage,
-  PlayerCardTitle,
-  PlayerCardName,
-  PlayerCardModality,
-  PlayerCardAtributes,
-  PlayerCardAtribute,
-  PlayerCardFooter,
 }

@@ -1,5 +1,13 @@
-import { HomeTabs } from '@/components/home/home-tabs'
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 
-export default function Home() {
-  return <HomeTabs />
+export default async function Home() {
+  const cookieStore = await cookies()
+  const token = cookieStore.get('access_token')
+
+  if (!token) {
+    redirect('/sign-in')
+  }
+
+  redirect('/dashboard')
 }
